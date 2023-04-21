@@ -15,6 +15,17 @@ void InputMatrix(int[,,] matrix)
             for (int k = 0; k < matrix.GetLength(2); k++)
             {
                 matrix[i, j, k] = new Random().Next(10, 100); // [10; 100];
+                for (int n = 0; n < matrix.GetLength(0); n++)
+                {
+                    for (int m = 0; m < matrix.GetLength(1); m++)
+                    {
+                        for (int z = 0; z < matrix.GetLength(2); z++)
+                        {
+                            if (matrix[i, j, k] == matrix[n, m, z])
+                            matrix[i, j, k] += 1;
+                        }
+                    }
+                }
             }
         }           
     }
@@ -29,8 +40,8 @@ void PrintMatrix(int[,,] matrix)
             for (int k = 0; k < matrix.GetLength(2); k++)
             {
             Console.Write($"{matrix[i, j, k]}({i},{j},{k}) \t");
-        Console.WriteLine();
             }
+             Console.WriteLine();
           }
     }
 }
